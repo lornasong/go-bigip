@@ -290,3 +290,23 @@ func (b *BigIP) PostAs3(as3 []byte) ([]byte, error) {
 
 	return b.APICall(req)
 }
+
+// GetAs3 returns information on resources created by AS3
+func (b *BigIP) GetAs3() ([]byte, error) {
+	req := &APIRequest{
+		Method: "get",
+		URL:    "mgmt/shared/appsvcs/declare",
+	}
+
+	return b.APICall(req)
+}
+
+// DeleteAs3 deletes resources created by AS3 declaration file
+func (b *BigIP) DeleteAs3() ([]byte, error) {
+	req := &APIRequest{
+		Method: "delete",
+		URL:    "mgmt/shared/appsvcs/declare",
+	}
+
+	return b.APICall(req)
+}

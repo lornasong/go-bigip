@@ -21,9 +21,22 @@ func mainAs3() {
 	f5 := bigip.NewSession("as3.company.com", "admin", "secret", nil)
 	resp, err := f5.PostAs3(as3File)
 	if err != nil {
-		fmt.Println("Error posting AS3:", err)
+		fmt.Println("Could not post AS3:", err)
 		return
 	}
+	fmt.Printf(" ---- Response: ----\n%s\n", resp)
 
-	fmt.Printf("Response: %s", resp)
+	data, err := f5.GetAs3()
+	if err != nil {
+		fmt.Println("Could not retrieve AS3 info:", err)
+		return
+	}
+	fmt.Printf(" ---- AS3 information: ----\n%s\n", data)
+
+	data, err = f5.DeleteAs3()
+	if err != nil {
+		fmt.Println("Could not delete AS3 resources:", err)
+		return
+	}
+	fmt.Printf(" ---- Delete Response: ----\n%s\n", data)
 }
