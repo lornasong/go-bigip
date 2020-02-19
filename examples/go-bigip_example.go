@@ -2,7 +2,8 @@ package bigip
 
 import (
 	"fmt"
-	"github.com/scottdware/go-bigip"
+
+	"github.com/lornasong/go-bigip"
 )
 
 func main() {

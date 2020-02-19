@@ -278,3 +278,35 @@ func (b *BigIP) UploadBytes(data []byte, filename string) (*Upload, error) {
 	size := int64(len(data))
 	return b.Upload(r, size, uriShared, uriFileTransfer, uriUploads, filename)
 }
+
+// PostAs3 supports the post method on the AS3 declaration file. Assume AS3 file is JSON
+func (b *BigIP) PostAs3(as3 []byte) ([]byte, error) {
+	req := &APIRequest{
+		Method:      "post",
+		URL:         "mgmt/shared/appsvcs/declare",
+		Body:        string(as3),
+		ContentType: "application/json",
+	}
+
+	return b.APICall(req)
+}
+
+// GetAs3 returns information on resources created by AS3
+func (b *BigIP) GetAs3() ([]byte, error) {
+	req := &APIRequest{
+		Method: "get",
+		URL:    "mgmt/shared/appsvcs/declare",
+	}
+
+	return b.APICall(req)
+}
+
+// DeleteAs3 deletes resources created by AS3 declaration file
+func (b *BigIP) DeleteAs3() ([]byte, error) {
+	req := &APIRequest{
+		Method: "delete",
+		URL:    "mgmt/shared/appsvcs/declare",
+	}
+
+	return b.APICall(req)
+}

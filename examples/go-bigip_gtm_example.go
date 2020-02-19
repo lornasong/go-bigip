@@ -3,7 +3,7 @@ package bigip
 import (
 	"fmt"
 
-	"github.com/scottdware/go-bigip"
+	"github.com/lornasong/go-bigip"
 )
 
 // Note: Had to call main something different as the package complained main was in LTM's example

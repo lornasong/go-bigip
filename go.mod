@@ -1,4 +1,4 @@
-module github.com/scottdware/go-bigip
+module github.com/lornasong/go-bigip
 
 go 1.12
 
